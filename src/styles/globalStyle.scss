@@ -1,0 +1,285 @@
+@function px-to-rem($px-value) {
+   @return $px-value / 16 * 1rem
+}
+
+* {
+   margin: 0;
+   padding: 0;
+}
+
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+}
+
+body,
+input,
+button,
+select,
+textarea {
+   font-family: 'Plus Jakarta Sans', sans-serif;
+   font-size: px-to-rem(16);
+}
+
+// Primary
+$Lime: hsl(61, 70%, 52%);
+$Red: hsl(4, 69%, 50%);
+
+// Neutral
+$White: hsl(0, 0%, 100%);
+$Slate-100: hsl(202, 86%, 94%);
+$Slate-300: hsl(203, 41%, 72%);
+$Slate-500: hsl(200, 26%, 54%);
+$Slate-700: hsl(200, 24%, 40%);
+$Slate-900: hsl(202, 55%, 16%);
+
+
+body {
+   display: grid;
+   place-items: center;
+   height: 100vh;
+   background-color: $Slate-100;
+}
+
+#root {
+   width: 100%;
+   max-width: px-to-rem(800);
+}
+
+main {
+   background-color: white;
+   padding: px-to-rem(20);
+   border-radius: px-to-rem(10) px-to-rem(10) 0 0;
+}
+
+.main__intro {
+   margin-block-end: px-to-rem(20);
+}
+
+.main__title {
+   font-size: px-to-rem(20);
+   color: $Slate-900;
+   margin-block-end: px-to-rem(10);
+}
+
+.main__clear {
+   color: $Slate-700;
+   font-size: px-to-rem(14);
+   border-bottom: 1px solid $Slate-700;
+   cursor: pointer;
+}
+
+.main__label {
+   display: block;
+   color: $Slate-700;
+   font-size: px-to-rem(13);
+   font-weight: 600;
+   margin-block-end: px-to-rem(10);
+}
+
+.main__mortgage-div {
+   position: relative;
+   display: flex;
+   align-items: center;
+   border: 1px solid $Slate-700;
+   border-radius: px-to-rem(5);
+}
+
+.main__mortgage-div.error {
+   border-color: $Red;
+}
+
+.main__mortgage-div.error .main__mortgage-span {
+   background-color: $Red;
+   color: $White;
+}
+
+.main__mortgage-div:has(input:focus):not(.error) {
+   border-color: $Lime;
+}
+
+.main__mortgage-div:has(input:focus):not(.error) .main__mortgage-span {
+   background-color: $Lime;
+}
+
+.main__mortgage-span {
+   position: absolute;
+   background-color: $Slate-100;
+   padding: px-to-rem(10) px-to-rem(12);
+   border-radius: px-to-rem(5) 0 0 px-to-rem(5);
+   height: 100%;
+   font-size: px-to-rem(16);
+   color: $Slate-900;
+   font-weight: 600;
+   pointer-events: none;
+}
+
+.formErrors {
+   margin-block: px-to-rem(10) px-to-rem(20);
+   font-size: px-to-rem(14);
+   color: $Red;
+   font-weight: 500;
+}
+
+
+
+//Disables the arrows from input
+.main__input[type="number"]::-webkit-outer-spin-button,
+.main__input[type="number"]::-webkit-inner-spin-button {
+   -webkit-appearance: none;
+}
+
+.main__input[type="number"] {
+   -moz-appearance: textfield;
+   appearance: none;
+}
+
+.main__input {
+   padding-inline-start: px-to-rem(50);
+   font-weight: 700;
+   border-radius: px-to-rem(5);
+   border: none;
+   height: px-to-rem(45);
+   width: 100%;
+   outline: none;
+}
+
+.right {
+   border-radius: px-to-rem(5);
+   right: 0;
+   padding-inline-start: px-to-rem(10);
+}
+
+.main__fieldset-radio {
+   display: flex;
+   align-items: center;
+   border: 1px solid $Slate-700;
+   padding: px-to-rem(10);
+   font-weight: bolder;
+   border-radius: px-to-rem(5);
+   color: $Slate-900;
+   margin-block-end: px-to-rem(10);
+
+   &:hover {
+      border-color: $Lime;
+   }
+
+   &>label {
+      cursor: pointer;
+   }
+}
+
+.main__fieldset-radio:has(.main__radio:checked) {
+   border-color: $Lime;
+   background-color: rgba($Lime, 0.1);
+}
+
+.main__radio {
+   margin-inline-end: px-to-rem(10);
+   appearance: none;
+   border-radius: 50%;
+   width: px-to-rem(18);
+   height: px-to-rem(18);
+   border: 1.5px solid rgba(32, 24, 107, .7);
+   position: relative;
+   cursor: pointer;
+
+   &:checked {
+      border: 1px solid $Lime;
+   }
+
+   &::before {
+      content: '';
+      width: px-to-rem(10);
+      height: px-to-rem(10);
+      background-color: transparent;
+      border-radius: 50%;
+      position: absolute;
+      bottom: 50%;
+      left: px-to-rem(-2);
+      transform: translate(50%, 50%);
+   }
+
+   &:checked::before {
+      background-color: $Lime;
+   }
+}
+
+.btn {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   gap: px-to-rem(10);
+   width: 100%;
+   height: px-to-rem(47);
+   border-radius: px-to-rem(50);
+   border: none;
+   background-color: $Lime;
+   font-weight: bolder;
+   font-size: px-to-rem(15);
+   color: $Slate-900;
+   padding-inline: px-to-rem(40);
+   cursor: pointer;
+   margin-block: px-to-rem(20) px-to-rem(10);
+   transition: background-color .4s ease-in-out;
+
+   &:hover {
+      background-color: hsl(61, 69%, 32%);
+      transition: background-color .4s ease-in-out;
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+/* plus-jakarta-sans-regular - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Plus Jakarta Sans';
+   font-style: normal;
+   font-weight: 400;
+   src: url('../assets/fonts/plus-jakarta-sans-v8-latin-regular.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* plus-jakarta-sans-500 - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Plus Jakarta Sans';
+   font-style: normal;
+   font-weight: 500;
+   src: url('../assets/fonts/plus-jakarta-sans-v8-latin-500.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* plus-jakarta-sans-600 - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Plus Jakarta Sans';
+   font-style: normal;
+   font-weight: 600;
+   src: url('../assets/fonts/plus-jakarta-sans-v8-latin-600.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* plus-jakarta-sans-700 - latin */
+@font-face {
+   font-display: swap;
+   /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+   font-family: 'Plus Jakarta Sans';
+   font-style: normal;
+   font-weight: 700;
+   src: url('../assets/fonts/plus-jakarta-sans-v8-latin-700.woff2') format('woff2');
+   /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}

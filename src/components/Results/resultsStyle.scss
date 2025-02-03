@@ -1,0 +1,87 @@
+@function px-to-rem($px-value) {
+   @return $px-value / 16 * 1rem
+}
+
+
+// Primary
+$Lime: hsl(61, 70%, 52%);
+$Red: hsl(4, 69%, 50%);
+
+// Neutral
+$White: hsl(0, 0%, 100%);
+$Slate-100: hsl(202, 86%, 94%);
+$Slate-300: hsl(203, 41%, 72%);
+$Slate-500: hsl(200, 26%, 54%);
+$Slate-700: hsl(200, 24%, 40%);
+$Slate-900: hsl(202, 55%, 16%);
+
+aside {
+   background-color: $Slate-900;
+   border-radius: 0 0 px-to-rem(10) px-to-rem(10);
+   padding: 0 px-to-rem(30) px-to-rem(30);
+}
+
+.aside__img {
+   padding-block-start: px-to-rem(30);
+   display: block;
+   margin-inline: auto;
+}
+
+.aside__title {
+   color: white;
+   text-align: center;
+   font-size: px-to-rem(22);
+   font-weight: 500;
+   padding-block-start: px-to-rem(25);
+}
+
+.aside__description {
+   margin-inline: auto;
+   padding-inline: px-to-rem(30);
+   padding-block-end: px-to-rem(30);
+   text-align: center;
+   color: hsla(203, 41%, 72%, .8);
+   font-weight: 400;
+   line-height: px-to-rem(22);
+   font-size: px-to-rem(15.5);
+   max-width: 42ch;
+}
+
+.left {
+   text-align: left;
+   margin-block-end: px-to-rem(15);
+   padding-inline: 0;
+   margin-inline: 0;
+}
+
+.aside__money {
+   border-top: 4px solid $Lime;
+   background-color: hsl(201, 41%, 13%);
+   padding: px-to-rem(30) px-to-rem(30) px-to-rem(15);
+   border-radius: px-to-rem(8);
+}
+
+.aside__info {
+   color: hsla(203, 87%, 94%, .6);
+}
+
+.aside__payment-month {
+   display: block;
+   font-size: clamp(2.375rem, 2.102rem + 1.364vw, 3.125rem);
+   color: $Lime;
+   font-weight: 800;
+   margin-block: px-to-rem(10) px-to-rem(30);
+}
+
+.aside__hr {
+   border: 1px solid rgba(255, 255, 255, 0.1);
+   margin-block-end: px-to-rem(20);
+}
+
+.aside__payment-total {
+   display: block;
+   color: #fff;
+   font-weight: 800;
+   font-size: px-to-rem(22);
+   margin-block: px-to-rem(10);
+}
