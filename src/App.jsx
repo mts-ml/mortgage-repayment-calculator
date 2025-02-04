@@ -84,19 +84,19 @@ function App() {
 
     if (!values.mortgageAmount) {
       errors.mortgageAmount = "This field is required."
-    } else if (values.mortgageAmount <= 0) {
+    } else if (values.mortgageAmount <= 0 || isNaN(values.mortgageAmount.trim())) {
       errors.mortgageAmount = "You need to enter a number higher than 0."
     }
 
     if (!values.mortgageTerm) {
       errors.mortgageTerm = "This field is required."
-    } else if (values.mortgageTerm <= 0) {
+    } else if (values.mortgageTerm <= 0 || isNaN(values.mortgageTerm.trim())) {
       errors.mortgageTerm = "You need to enter a number higher than 0."
     }
 
     if (!values.interestRate) {
       errors.interestRate = "This field is required."
-    } else if (values.interestRate <= 0 || values.interestRate > 100) {
+    } else if (values.interestRate <= 0 || values.interestRate > 100 || isNaN(values.interestRate.trim())) {
       errors.interestRate = "You need to enter a number between 0 - 100."
     }
 
@@ -132,7 +132,7 @@ function App() {
 
             <input
               className="main__input"
-              type="number"
+              type="text"
               id="mortgageAmount"
               name="mortgageAmount"
               onChange={handleChange}
@@ -149,7 +149,7 @@ function App() {
             <div className={clsx("main__mortgage-div", { error: formErrors?.mortgageTerm })}>
               <input
                 className="main__input right"
-                type="number"
+                type="text"
                 id="mortgageTerm"
                 name="mortgageTerm"
                 onChange={handleChange}
@@ -168,7 +168,7 @@ function App() {
             <div className={clsx("main__mortgage-div", { error: formErrors?.interestRate })}>
               <input
                 className="main__input right"
-                type="number"
+                type="text"
                 id="interestRate"
                 name="interestRate"
                 onChange={handleChange}
