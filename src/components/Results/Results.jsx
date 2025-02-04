@@ -17,7 +17,7 @@ export default function Results(props) {
       if (value === null) {
          return "£0.00"
       }
-      
+
       return value.toLocaleString('en-GB',
          {
             style: 'currency', currency: "GBP"
@@ -52,7 +52,15 @@ export default function Results(props) {
             </div>
          ) : (
             <div className="aside__empty">
-               <img className='aside__img' src={emptyImg} alt="Image of a calculator and money" />
+               <img
+                  className='aside__img'
+                  src={emptyImg}
+                  alt="Image of a calculator and money"
+                  loading='lazy'
+                  fetchPriority='high'
+                  width={200}
+                  height={300}
+               />
 
                <h2 className="aside__title">Results shown here</h2>
 

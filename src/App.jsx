@@ -120,13 +120,19 @@ function App() {
         <div className="main__intro">
           <h1 className="main__title">Mortgage Calculator</h1>
 
-          <span onClick={clearAll} className="main__clear">Clear All</span>
+          <span
+            onClick={clearAll}
+            className="main__clear"
+            tabIndex={0}
+            role="button"
+          >Clear All</span>
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
-          <label className="main__label" htmlFor="mortgageAmount">Mortgage Amount</label>
 
           {/* MORTGAGE AMOUNT */}
+          <label className="main__label" htmlFor="mortgageAmount">Mortgage Amount</label>
+
           <div className={clsx("main__mortgage-div", { error: formErrors?.mortgageAmount })}>
             <span className="main__mortgage-span">£</span>
 
@@ -137,14 +143,20 @@ function App() {
               name="mortgageAmount"
               onChange={handleChange}
               value={formValues.mortgageAmount}
+              aria-describedby="mortgageAmountError"
             />
           </div>
 
-          <p className="formErrors">{formErrors.mortgageAmount}</p>
+          <p
+            className="formErrors"
+            aria-live="polite"
+          >
+            {formErrors.mortgageAmount}
+          </p>
 
           {/* MORTGAGE TERM */}
           <div className="mortage">
-            <label className="main__label" htmlFor="mortageTerm">Mortgage Term</label>
+            <label className="main__label" htmlFor="mortgageTerm">Mortgage Term</label>
 
             <div className={clsx("main__mortgage-div", { error: formErrors?.mortgageTerm })}>
               <input
@@ -160,7 +172,7 @@ function App() {
 
             </div>
 
-            <p className="formErrors">{formErrors.mortgageTerm}</p>
+            <p className="formErrors" aria-live="polite">{formErrors.mortgageTerm}</p>
 
             {/* INTEREST RATE */}
             <label className="main__label" htmlFor="interestRate">Interest Rate</label>
@@ -178,7 +190,7 @@ function App() {
               <span className="main__mortgage-span right">%</span>
             </div>
 
-            <p className="formErrors">{formErrors.interestRate}</p>
+            <p className="formErrors" aria-live="polite">{formErrors.interestRate}</p>
 
           </div>
 
@@ -186,6 +198,7 @@ function App() {
           <legend className="main__label">Morgtage Type</legend>
 
           <fieldset className={clsx("main__fieldset-radio", { error: formErrors?.mortgageType })}>
+
             <input type="radio"
               className="main__radio"
               id="mortgageType1"
@@ -212,7 +225,7 @@ function App() {
             <label htmlFor="mortgageType2">Interest Only</label>
           </fieldset>
 
-          <p className="formErrors">{formErrors.mortgageType}</p>
+          <p className="formErrors" aria-live="polite">{formErrors.mortgageType}</p>
 
           <button className="btn" type="submit">
             <img src={calculatorIcon} alt="Icon of a calculator" />
