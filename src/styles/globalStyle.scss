@@ -231,6 +231,33 @@ main {
 }
 
 
+@media (min-width: px-to-rem(768)) {
+   #root {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+   }
+
+   main {
+      border-radius: px-to-rem(20) 0 0 px-to-rem(20);
+      padding: px-to-rem(40) px-to-rem(40) px-to-rem(30);
+   }
+
+   .main__intro {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+   }
+
+   .btn {
+      margin-block-start: px-to-rem(40);
+   }
+}
+
+@media (min-width: px-to-rem(1200)) {
+   #root {
+      max-width: px-to-rem(1240);
+   }
+}
 
 
 

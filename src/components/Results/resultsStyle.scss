@@ -85,3 +85,27 @@ aside {
    font-size: px-to-rem(22);
    margin-block: px-to-rem(10);
 }
+
+@media (min-width: px-to-rem(768)) {
+   aside {
+      position: relative;
+      display: grid;
+      place-items: center;
+      border-radius: 0 px-to-rem(25) px-to-rem(25) px-to-rem(80);
+
+      &::after {
+         content: '';
+         position: absolute;
+         bottom: 0;
+         left: 0;
+         z-index: -1;
+         background-color: white;
+         width: px-to-rem(100);
+         height: px-to-rem(100);
+      }
+   }
+
+   .aside__title {
+      margin-block-end: px-to-rem(20);
+   }
+}
