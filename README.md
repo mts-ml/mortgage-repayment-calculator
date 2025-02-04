@@ -24,7 +24,7 @@ Users should be able to:
 
 ### Links
 
-- [Preview Site](https://your-live-site-url.com)
+- [Preview Site](https://mts-ml.github.io/mortgage-repayment-calculator/)
 
 
 ### Built with
@@ -40,4 +40,4 @@ Users should be able to:
 ## Author
 
 - Frontend Mentor - [@mts-ml](https://www.frontendmentor.io/profile/mts-ml)
-[LinkedIn](https://www.linkedin.com/in/mateus-lima-036790184/)
+- [LinkedIn](https://www.linkedin.com/in/mateus-lima-036790184/)
