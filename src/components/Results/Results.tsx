@@ -9,7 +9,7 @@ interface ResultsProps {
    isSubmit: boolean
    formErrors: Partial<FormValues>
    monthlyPayment: number | null
-   totalPayment: number |  null
+   totalPayment: number | null
 }
 
 
@@ -30,7 +30,7 @@ export const Results: React.FC<ResultsProps> = (props) => {
    return (
       <aside>
          {Object.keys(props.formErrors).length === 0 && props.isSubmit ? (
-            <div className="aside__full">
+            <div className="aside__full" aria-live='polite'>
                <h2 className="aside__title left">Your results</h2>
 
                <p className='aside__description left'>
@@ -41,7 +41,8 @@ export const Results: React.FC<ResultsProps> = (props) => {
                <div className="aside__money">
                   <p className="aside__info">Your monthly repayments</p>
 
-                  <span className="aside__payment-month">{formatCurrency(props?.monthlyPayment ?? 0)}</span>
+                  <span className="aside__payment-month">{formatCurrency(props?.monthlyPayment ?? 0)}
+                  </span>
 
                   <hr className='aside__hr' />
 

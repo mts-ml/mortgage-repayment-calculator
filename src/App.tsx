@@ -216,7 +216,10 @@ function App() {
           </div>
 
           {/* INPUT RADIO */}
-          <fieldset className={clsx("main__fieldset-radio", { error: formErrors?.mortgageType })}>
+          <fieldset
+            className={clsx("main__fieldset-radio", { error: formErrors?.mortgageType })}
+            role="radiogroup"
+          >
 
             <legend className="main__label">Morgtage Type</legend>
 
