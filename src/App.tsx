@@ -1,6 +1,6 @@
+import { useEffect, useState } from "react"
 import { Results } from "./components/Results/Results"
 import calculatorIcon from './assets/images/icon-calculator.svg'
-import { useEffect, useState } from "react"
 import clsx from 'clsx'
 
 import './styles/globalStyle.scss'
@@ -12,6 +12,7 @@ export interface FormValues {
   interestRate: string
   mortgageType: string
 }
+
 
 function App() {
   const initialValues: FormValues = {
@@ -104,7 +105,7 @@ function App() {
     }
 
     if (!values.mortgageType) {
-      errors.mortgageType = "This field is required"
+      errors.mortgageType = "This field is required."
     }
     return errors
   }
@@ -117,18 +118,20 @@ function App() {
     setTotalPayment(null)
   }
 
+
   return (
     <>
       <main>
         <div className="main__intro">
           <h1 className="main__title">Mortgage Calculator</h1>
 
-          <span
+          <button
+            type="button"
             onClick={clearAll}
             className="main__clear"
-            tabIndex={0}
-            role="button"
-          >Clear All</span>
+          >
+            Clear All Fields
+          </button>
         </div>
 
         <form onSubmit={handleSubmit} noValidate>
@@ -151,6 +154,7 @@ function App() {
           </div>
 
           <p
+            id="mortgageAmountError"
             className="formErrors"
             aria-live="polite"
           >
@@ -169,13 +173,20 @@ function App() {
                 name="mortgageTerm"
                 onChange={handleChange}
                 value={formValues.mortgageTerm}
+                aria-describedby="mortgageTermError"
               />
 
               <span className="main__mortgage-span right">years</span>
 
             </div>
 
-            <p className="formErrors" aria-live="polite">{formErrors.mortgageTerm}</p>
+            <p
+              id="mortgageTermError"
+              className="formErrors"
+              aria-live="polite"
+            >
+              {formErrors.mortgageTerm}
+            </p>
 
             {/* INTEREST RATE */}
             <label className="main__label" htmlFor="interestRate">Interest Rate</label>
@@ -188,47 +199,64 @@ function App() {
                 name="interestRate"
                 onChange={handleChange}
                 value={formValues.interestRate}
+                aria-describedby="interestRateError"
               />
 
               <span className="main__mortgage-span right">%</span>
             </div>
 
-            <p className="formErrors" aria-live="polite">{formErrors.interestRate}</p>
+            <p
+              id="interestRateError"
+              className="formErrors"
+              aria-live="polite"
+            >
+              {formErrors.interestRate}
+            </p>
 
           </div>
 
           {/* INPUT RADIO */}
-          <legend className="main__label">Morgtage Type</legend>
-
           <fieldset className={clsx("main__fieldset-radio", { error: formErrors?.mortgageType })}>
 
-            <input type="radio"
-              className="main__radio"
-              id="mortgageType1"
-              name="mortgageType"
-              value={'repayment'}
-              checked={formValues.mortgageType === 'repayment'}
-              onChange={handleChange}
-            />
+            <legend className="main__label">Morgtage Type</legend>
 
-            <label htmlFor="mortgageType1">Repayment</label>
+            <div className="main__radio-div">
+              <input type="radio"
+                className="main__radio"
+                id="mortgageType1"
+                name="mortgageType"
+                value={'repayment'}
+                checked={formValues.mortgageType === 'repayment'}
+                onChange={handleChange}
+                aria-describedby="mortgageInputRadioError"
+              />
+
+              <label htmlFor="mortgageType1">Repayment</label>
+            </div>
+
+            <div className="main__radio-div">
+              <input
+                className="main__radio"
+                type="radio"
+                id="mortgageType2"
+                name="mortgageType"
+                value={'interest-only'}
+                checked={formValues.mortgageType === 'interest-only'}
+                onChange={handleChange}
+                aria-describedby="mortgageInputRadioError"
+              />
+
+              <label htmlFor="mortgageType2">Interest Only</label>
+            </div>
           </fieldset>
 
-          <fieldset className={clsx("main__fieldset-radio", { error: formErrors?.mortgageType })}>
-            <input
-              className="main__radio"
-              type="radio"
-              id="mortgageType2"
-              name="mortgageType"
-              value={'interest-only'}
-              checked={formValues.mortgageType === 'interest-only'}
-              onChange={handleChange}
-            />
-
-            <label htmlFor="mortgageType2">Interest Only</label>
-          </fieldset>
-
-          <p className="formErrors" aria-live="polite">{formErrors.mortgageType}</p>
+          <p
+            id="mortgageInputRadioError"
+            className="formErrors formInputRadio"
+            aria-live="polite"
+          >
+            {formErrors.mortgageType}
+          </p>
 
           <button className="btn" type="submit">
             <img src={calculatorIcon} alt="Icon of a calculator" />

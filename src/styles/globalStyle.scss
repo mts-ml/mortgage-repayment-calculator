@@ -68,6 +68,8 @@ main {
    font-size: px-to-rem(14);
    border-bottom: 1px solid $Slate-700;
    cursor: pointer;
+   background-color: transparent;
+   border: none;
 }
 
 .main__label {
@@ -122,6 +124,10 @@ main {
    font-weight: 500;
 }
 
+.formInputRadio {
+   margin-block: px-to-rem(-5) px-to-rem(20);
+}
+
 
 
 //Disables the arrows from input
@@ -152,37 +158,58 @@ main {
 }
 
 .main__fieldset-radio {
-   display: flex;
-   align-items: center;
-   border: 1px solid $Slate-700;
-   padding: px-to-rem(10);
+   border: none;
    font-weight: bolder;
    border-radius: px-to-rem(5);
    color: $Slate-900;
-   margin-block-end: px-to-rem(10);
+}
+
+
+.main__fieldset-radio.error .main__radio-div {
+   border-color: $Red;
+}
+
+.main__fieldset-radio.error .main__radio-div>label {
+   color: $Red;
+}
+
+label {
+   display: inline-block;
+   width: 13ch;
 
    &:hover {
-      border-color: $Lime;
-   }
-
-   &>label {
       cursor: pointer;
    }
 }
 
-.main__fieldset-radio:has(.main__radio:checked) {
+.main__radio-div {
+   display: flex;
+   align-items: center;
+   margin-block-end: px-to-rem(20);
+   padding: px-to-rem(12) px-to-rem(8);
+   border: 1px solid $Slate-700;
+   border-radius: px-to-rem(5);
+   transition: all .2s ease-in-out;
+
+   &>label {
+      width: 100%;
+      cursor: pointer;
+   }
+}
+
+.main__radio-div:has(.main__radio:checked) {
    border-color: $Lime;
    background-color: rgba($Lime, 0.1);
 }
 
 .main__radio {
+   position: relative;
    margin-inline-end: px-to-rem(10);
    appearance: none;
    border-radius: 50%;
    width: px-to-rem(18);
    height: px-to-rem(18);
    border: 1.5px solid rgba(32, 24, 107, .7);
-   position: relative;
    cursor: pointer;
 
    &:checked {
@@ -205,6 +232,7 @@ main {
       background-color: $Lime;
    }
 }
+
 
 .btn {
    display: flex;
